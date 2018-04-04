@@ -1,4 +1,2 @@
 ﻿  Starting Room.cpp
-d:\brady collier\visual studio\repos\group game\dungeondiving\dungeondiving\starting room.cpp(93): error C3861: 'h11': identifier not found
-d:\brady collier\visual studio\repos\group game\dungeondiving\dungeondiving\starting room.cpp(109): warning C4553: '==': operator has no effect; did you intend '='?
-d:\brady collier\visual studio\repos\group game\dungeondiving\dungeondiving\starting room.cpp(154): error C3861: 'h5': identifier not found
+  DungeonDiving.vcxproj -> D:\Brady Collier\Visual Studio\Repos\Group Game\DungeonDiving\Debug\DungeonDiving.exe
