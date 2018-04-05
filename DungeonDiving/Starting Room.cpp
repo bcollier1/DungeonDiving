@@ -1,4 +1,9 @@
+// Project Name: DungeonDiving
 // Starting_Room.cpp : Beginning Stages of the game
+// Created by: Brady Collier
+// Date Finished: April 5th, 2018
+// Contributors: Brady Collier
+// Group Members: Oliver, Hailey, Ryan, Devon
 
 #include "stdafx.h"
 #include <iostream>
@@ -6,21 +11,28 @@
 
 using namespace std;
 
+//Global variables
 char dir;
 char ans;
 int gear = 0;
 int key = 0;
 int area = 0;
 
+//R# = The rooms
 void r3() {
+	//Boolean for while statments for loop
 	bool r3ans = true;
 	bool r3ans1 = true;
+	//Prompts user where they are
 	cout << "\nYou have entered a room! You notice something strange. The bedsheets\n";
 	cout << "are off the bed and been thrown onto the ground but in a weird shape.\n";
 	cout << "Do you wish to search the sheets?(Y or N)\n\n";
+	//Gets users answer
 	cin >> ans;
+	//Checks what they have entered
 	while (r3ans) {
 		if (ans == 'Y' || ans == 'y') {
+			//Prompts user dialogue 
 			cout << "\nYou notice that there is a blood stain. YOUR TIME IS NOW TICKING!\n\n";
 			r3ans = false;
 		}
@@ -33,12 +45,14 @@ void r3() {
 			cin >> ans;
 		}
 	}
+	//Prompts user of dialogue **This is repeated many times ignore the lack of comments due to repition**
 	cout << "You notice there is a dresser. Do you wish to search it? (Y or N)\n\n";
 	cin >> ans;
 	while (r3ans1) {
 		if (ans == 'Y' || ans == 'y') {
 			cout << "You have found the murder weapon! YOUR TIME IS NOW TICKING!\n\n";
 			r3ans1 = false;
+			//Variable for area which = voids
 			area = 2;
 
 		}
@@ -49,6 +63,7 @@ void r3() {
 
 		}
 		else {
+			//Prompts user that they have entered an invaild answer
 			cout << "Wrong answer! Enter Y OR N\n\n";
 			cin >> ans;
 		}
@@ -101,7 +116,10 @@ void r4() {
 }
 
 void r7() {
-	cout << "";
+	cout << "\nTick, tick, tick, tick... BOOOM!!!\n";
+	cout << "Uh-oh you have died due to an explosion. Thank you for playing!\n\n";
+	system("PAUSE");
+	exit(0);
 }
 
 void r9() {
@@ -185,7 +203,6 @@ void r10() {
 			else if (ans == 'N' || ans == 'n') {
 				cout << "\nThere is nothing else to search\n\n";
 				r10ans = false;
-				//h11();
 				area = 11;
 			}
 		}
@@ -232,6 +249,7 @@ void r12() {
 	}
 }
 
+//H# = Hallways
 void h2() {
 	cout << "You entered a hallway, you can either choose to go east into a bedroom\n";
 	cout << "or go south. Which way would you like to go?(E or S)\n\n";
@@ -251,17 +269,14 @@ void h5() {
 	while (h5dir) {
 		if (dir == 'W' || dir == 'w') {
 			h5dir = false;
-			//r4();
 			area = 4;
 		}
 		else if (dir == 'S' || dir == 's') {
 			h5dir = false;
-			//h8();
 			area = 8;
 		}
 		else if (dir == 'E' || dir == 'e') {
 			h5dir = false;
-			//h6();
 			area = 6;
 		}
 		else {
@@ -278,12 +293,10 @@ void h6() {
 	while (h6dir) {
 		if (dir == 'W' || dir == 'w') {
 			h6dir = false;
-			//h5();
 			area = 5;
 		}
 		else if (dir == 'S' || dir == 's') {
 			h6dir = false;
-			//r9();
 			area = 9;
 		}
 		else {
@@ -300,12 +313,10 @@ void h8() {
 	while (h8dir) {
 		if (dir == 'W' || dir == 'w') {
 			h8dir = false;
-			//r7();
 			area = 7;
 		}
 		else if (dir == 'S' || dir == 's') {
 			h8dir = false;
-			//h11();
 			area = 11;
 		}
 		else {
@@ -322,7 +333,6 @@ void h11() {
 	while (h11dir) {
 		if (dir == 'W' || dir == 'w') {
 			h11dir = false;
-			//r10();
 			area = 10;
 		}
 		else if (dir == 'S' || dir == 's' && key == 0) {
@@ -333,11 +343,11 @@ void h11() {
 			cout << "\nCongratulation! You can now enter the next room!\n\n";
 			h11dir = false;
 			system("PAUSE");
+			//Enters the next room
 			//room2();
 		}
 		else if (dir == 'E' || dir == 'e') {
 			h11dir = false;
-			//r12();
 			area = 12;
 		}
 		else {
@@ -351,7 +361,7 @@ int room1() {
 	bool acheck = true;
 	int room = 0;
 
-
+	//Main dialogue to introduce the user of the main goal
 	cout << "ATTENTION: PRIVATE JONES, YOU MUST FIND WHERE THE MISSING PERSON IS. YOUR\n";
 	cout << "TIME IS RUNNING OUT! YOU HAVE 48 HOURS TO FIND THIS PERSON OR YOU WILL FAIL!\n";
 	cout << "REPORT BACK TO ME ASAP! GOOD LUCK PRIVATE!\n";
@@ -360,6 +370,7 @@ int room1() {
 	cout << "house is in a mess and that everything is destroyed except for a door.\n";
 	h2();
 	
+	//Check the area that was given to each void above to call
 	while (acheck) {
 		if (area == 2) {
 			h2();
@@ -371,7 +382,7 @@ int room1() {
 		if (area == 4) {
 			r4();
 		}
-		else if (area == 5) {
+		if (area == 5) {
 			h5();
 		}
 		if (area == 6) {
