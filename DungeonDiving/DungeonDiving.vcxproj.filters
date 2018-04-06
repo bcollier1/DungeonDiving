@@ -24,6 +24,9 @@
     <ClInclude Include="sroom1.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="eroom.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -33,6 +36,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Starting Room.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\End Room.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -8,6 +8,7 @@
 #include "stdafx.h"
 #include <iostream>
 #include <string>
+#include "eroom.h"
 
 using namespace std;
 
@@ -17,6 +18,7 @@ char ans;
 int gear = 0;
 int key = 0;
 int area = 0;
+int point = 0;
 
 //R# = The rooms
 void r3() {
@@ -162,6 +164,8 @@ void r9() {
 void r10() {
 	bool r10ans = true;
 	bool r10ans1 = true;
+	bool r10ans2 = true;
+	bool r10ans3 = true;
 	cout << "\nYou have entered a room that contains a rug that has a bulge in the\n";
 	cout << "center of it. Did you want to search to see what's there. (Y or N)\n\n";
 	cin >> ans;
@@ -170,10 +174,9 @@ void r10() {
 			cout << "\nThere was a gear under the rug. Do you want to pick it up? (Y or N)\n\n";
 			cin >> ans;
 			while (r10ans1) {
-				if (ans == 'Y' || ans == 'y') {
-					cout << "\n'You have picked up a gear.'";
+				if (ans == 'Y' || ans == 'y' && gear == 0) {
+					cout << "\n'You have picked up a gear.'\n";
 					r10ans1 = false;
-					r10ans = false;
 					gear = 1;
 				}
 				else if (ans == 'N' || ans == 'n') {
@@ -188,8 +191,40 @@ void r10() {
 		else if (ans == 'N' || ans == 'n') {
 			cout << "\nYou notice there is a grandfather clock. Do you want to search it? (Y or N)\n\n";
 			cin >> ans;
+			while (r10ans2) {
+				if (ans == 'Y' || ans == 'y' && gear == 0) {
+					cout << "\nYou notice that there is a missing gear. Find it and then come back\n\n";
+					r10ans2 = false;
+					area = 11;
+
+				}
+				if (ans == 'Y' || ans == 'y' && gear == 1) {
+					cout << "\nYou have found the key!";
+					key = 1;
+					r10ans = false;
+					r10ans2 = false;
+					area = 11;
+
+				}
+				else if (ans == 'N' || ans == 'n') {
+					cout << "\nThere is nothing else to search\n\n";
+					r10ans = false;
+					r10ans2 = false;
+					area = 11;
+				}
+				else {
+					cout << "\nWrong answer! Enter Y OR N\n\n";
+					cin >> ans;
+				}
+			}
+		}
+		cout << "\nYou notice there is a grandfather clock. Do you want to search it? (Y or N)\n\n";
+		cin >> ans;
+		while (r10ans3) {
 			if (ans == 'Y' || ans == 'y' && gear == 0) {
 				cout << "\nYou notice that there is a missing gear. Find it and then come back\n\n";
+				r10ans = false;
+				r10ans3 = false;
 				area = 11;
 
 			}
@@ -197,13 +232,19 @@ void r10() {
 				cout << "\nYou have found the key!";
 				key = 1;
 				r10ans = false;
+				r10ans3 = false;
 				area = 11;
 
 			}
 			else if (ans == 'N' || ans == 'n') {
 				cout << "\nThere is nothing else to search\n\n";
 				r10ans = false;
+				r10ans3 = false;
 				area = 11;
+			}
+			else {
+				cout << "\nWrong answer! Enter Y OR N\n\n";
+				cin >> ans;
 			}
 		}
 	}
@@ -251,14 +292,23 @@ void r12() {
 
 //H# = Hallways
 void h2() {
+	bool h2dir = true;
 	cout << "You entered a hallway, you can either choose to go east into a bedroom\n";
 	cout << "or go south. Which way would you like to go?(E or S)\n\n";
 	cin >> dir;
-	if (dir == 'e' || dir == 'E') {
-		area = 3;
-	}
-	else if (dir == 'S' || dir == 's') {
-		area = 5;
+	while (h2dir) {
+		if (dir == 'e' || dir == 'E') {
+			area = 3;
+			h2dir = false;
+		}
+		else if (dir == 'S' || dir == 's') {
+			area = 5;
+			h2dir = false;
+		}
+		else {
+			cout << "\nWrong answer! Enter E or S\n\n";
+			cin >> dir;
+		}
 	}
 }
 
@@ -343,8 +393,9 @@ void h11() {
 			cout << "\nCongratulation! You can now enter the next room!\n\n";
 			h11dir = false;
 			system("PAUSE");
+			system("CLS");
 			//Enters the next room
-			//room2();
+			endroom();
 		}
 		else if (dir == 'E' || dir == 'e') {
 			h11dir = false;
@@ -375,7 +426,6 @@ int room1() {
 		if (area == 2) {
 			h2();
 		}
-
 		if (area == 3) {
 			r3();
 		}
