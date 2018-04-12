@@ -8,7 +8,7 @@
 #include "stdafx.h"
 #include <iostream>
 #include <string>
-#include "eroom.h"
+#include "hroom.h"
 
 using namespace std;
 
@@ -16,7 +16,7 @@ using namespace std;
 char dir;
 char ans;
 int gear = 0;
-int key = 0;
+int skey = 0;
 int area = 0;
 int point = 0;
 
@@ -200,7 +200,7 @@ void r10() {
 				}
 				if (ans == 'Y' || ans == 'y' && gear == 1) {
 					cout << "\nYou have found the key!";
-					key = 1;
+					skey = 1;
 					r10ans = false;
 					r10ans2 = false;
 					area = 11;
@@ -230,7 +230,7 @@ void r10() {
 			}
 			if (ans == 'Y' || ans == 'y' && gear == 1) {
 				cout << "\nYou have found the key!";
-				key = 1;
+				skey = 1;
 				r10ans = false;
 				r10ans3 = false;
 				area = 11;
@@ -385,17 +385,17 @@ void h11() {
 			h11dir = false;
 			area = 10;
 		}
-		else if (dir == 'S' || dir == 's' && key == 0) {
+		else if (dir == 'S' || dir == 's' && skey == 0) {
 			cout << "\nYou need to unlock the door!\n";
 			h11();
 		}
-		else if (dir == 'S' || dir == 's' && key == 1) {
+		else if (dir == 'S' || dir == 's' && skey == 1) {
 			cout << "\nCongratulation! You can now enter the next room!\n\n";
 			h11dir = false;
 			system("PAUSE");
 			system("CLS");
 			//Enters the next room
-			endroom();
+			hmain();
 		}
 		else if (dir == 'E' || dir == 'e') {
 			h11dir = false;
@@ -416,6 +416,7 @@ int room1() {
 	cout << "ATTENTION: PRIVATE JONES, YOU MUST FIND WHERE THE MISSING PERSON IS. YOUR\n";
 	cout << "TIME IS RUNNING OUT! YOU HAVE 48 HOURS TO FIND THIS PERSON OR YOU WILL FAIL!\n";
 	cout << "REPORT BACK TO ME ASAP! GOOD LUCK PRIVATE!\n";
+	system("PAUSE");
 	system("CLS");
 	cout << "Time is key! You have enter the victim's house. You have notice that the\n";
 	cout << "house is in a mess and that everything is destroyed except for a door.\n";
